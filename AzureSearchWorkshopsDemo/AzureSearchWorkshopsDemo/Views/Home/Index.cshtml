@@ -1,0 +1,32 @@
+﻿@model IEnumerable<AzureSearchWorkshopsDemo.Models.Article>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <form method="get">
+        <br />
+        <h4>Query</h4>
+        <input class="form-control" type="text" name="query" required />
+        <br />
+        <button class="btn btn-primary" formaction="/Home/Index">Search</button>
+    </form>
+
+    <br />
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Title</td>
+                <td>Content</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var result in Model)
+            {
+                <tr>
+                    <td>@result.Title</td><td>@result.Content</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
