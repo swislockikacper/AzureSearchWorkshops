@@ -34,8 +34,10 @@ namespace AzureSearchWorkshopsDemo.Controllers
                 QueryType = QueryType.Full
             };
 
+            if (query != null && query.Length > 0)
+                return indexClient.Documents.Search($"{query}~1" , searchParameters);
+
             return indexClient.Documents.Search(query, searchParameters);
-            //return indexClient.Documents.Search($"{query??"lorem"}~1" , searchParameters);
         }
 
         private IEnumerable<Article> DeserializeResults(DocumentSearchResult response)
